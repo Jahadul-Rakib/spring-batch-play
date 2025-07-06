@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: spring-batch-play
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/batch_db
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:root}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  batch:
+    jdbc:
+      initialize-schema: always
+    job:
+      table-prefix: BATCH_
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics,batch
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html

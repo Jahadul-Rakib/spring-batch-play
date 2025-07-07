@@ -1,5 +1,6 @@
 package com.rakib.springbatchplay.steps;
 
+import com.rakib.springbatchplay.configurations.ApplicationConstant;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -20,7 +21,7 @@ public class ExcelItemReader implements ItemReader<Row> {
     private Workbook workbook;
     private Iterator<Row> rowIterator;
 
-    @Value("#{jobParameters['input.file.path']}")
+    @Value(ApplicationConstant.BATCH_FILE_PATH_PARAMETER_FULL)
     public void setFilePath(String filePath) {
         this.filePath = filePath;
     }

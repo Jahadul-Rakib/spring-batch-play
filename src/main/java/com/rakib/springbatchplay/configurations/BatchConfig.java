@@ -57,8 +57,7 @@ public class BatchConfig {
 
 
     @Bean
-    public JobExplorer jobExplorer(DataSource dataSource,
-                                   PlatformTransactionManager transactionManager) throws Exception {
+    public JobExplorer jobExplorer(DataSource dataSource, PlatformTransactionManager transactionManager) throws Exception {
         JobExplorerFactoryBean factory = new JobExplorerFactoryBean();
         factory.setTransactionManager(transactionManager);
         factory.setDataSource(dataSource);
@@ -68,8 +67,7 @@ public class BatchConfig {
     }
 
     @Bean
-    public JobRepository jobRepository(DataSource dataSource,
-                                       PlatformTransactionManager transactionManager) throws Exception {
+    public JobRepository jobRepository(DataSource dataSource, PlatformTransactionManager transactionManager) throws Exception {
         JobRepositoryFactoryBean factory = new JobRepositoryFactoryBean();
         factory.setDataSource(dataSource);
         factory.setTransactionManager(transactionManager);
@@ -85,10 +83,7 @@ public class BatchConfig {
     }
 
     @Bean
-    public JobOperator jobOperator(JobRepository jobRepository,
-                                   JobExplorer jobExplorer,
-                                   JobRegistry jobRegistry,
-                                   JobLauncher jobLauncher) throws Exception {
+    public JobOperator jobOperator(JobRepository jobRepository, JobExplorer jobExplorer, JobRegistry jobRegistry, JobLauncher jobLauncher) throws Exception {
         SimpleJobOperator operator = new SimpleJobOperator();
         operator.setJobRepository(jobRepository);
         operator.setJobExplorer(jobExplorer);

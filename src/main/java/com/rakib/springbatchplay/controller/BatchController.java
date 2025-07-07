@@ -22,8 +22,7 @@ public class BatchController {
     private final BatchService batchService;
 
     @PostMapping
-    public ResponseEntity<?> executeBatch(@RequestParam("file") MultipartFile file,
-                                          @RequestParam("job-name") String jobName) {
+    public ResponseEntity<?> executeBatch(@RequestParam("file") MultipartFile file) {
         String filename = file.getOriginalFilename();
         if (filename == null || !filename.matches(".*\\.(xlsx|xlsm|xlsb|xltx|xltm)$")) {
             return ResponseEntity.badRequest().body("Invalid file type. Excel file: (.xlsx, .xlsm, .xlsb)");

@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class ExcelJobCompletionListener implements JobExecutionListener {
-    Logger logger = LoggerFactory.getLogger(ExcelJobCompletionListener.class);
+public class JobListener implements JobExecutionListener {
+    Logger logger = LoggerFactory.getLogger(JobListener.class);
 
     @Override
     public void beforeJob(JobExecution jobExecution) {

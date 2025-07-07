@@ -158,7 +158,8 @@ public class BatchConfig {
                 .tasklet((contribution, chunkContext) -> {
                     String filePath = chunkContext.getStepContext()
                             .getJobParameters()
-                            .get("input.file.path").toString();
+                            .get(ApplicationConstant.BATCH_FILE_PATH_PARAMETER)
+                            .toString();
                     try {
                         Path path = Paths.get(filePath);
                         boolean deleted = Files.deleteIfExists(path);

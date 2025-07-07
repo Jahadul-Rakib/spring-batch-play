@@ -1,5 +1,6 @@
 package com.rakib.springbatchplay.service.impl;
 
+import com.rakib.springbatchplay.configurations.ApplicationConstant;
 import com.rakib.springbatchplay.service.BatchService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
@@ -26,7 +27,7 @@ public class BatchServiceImpl implements BatchService {
     @Override
     public void startBatchDataProcessing(String filePath) {
         JobParameters jobParameters = new JobParametersBuilder()
-                .addString("input.file.path", filePath, true)
+                .addString(ApplicationConstant.BATCH_FILE_PATH_PARAMETER, filePath, true)
                 .addLong("time", System.currentTimeMillis())
                 .toJobParameters();
         try {

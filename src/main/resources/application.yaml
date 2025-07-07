@@ -7,14 +7,24 @@ spring:
     username: ${DB_USERNAME:postgres}
     password: ${DB_PASSWORD:root}
     driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      connection-timeout: 30000
   jpa:
+    database: postgresql
     hibernate:
       ddl-auto: validate
+
   batch:
     jdbc:
       initialize-schema: always
     job:
       table-prefix: BATCH_
+
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
 
 management:
   endpoints:

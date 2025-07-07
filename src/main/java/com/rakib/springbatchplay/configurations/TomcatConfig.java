@@ -10,8 +10,6 @@ public class TomcatConfig {
 
     @Bean
     public WebServerFactoryCustomizer<TomcatServletWebServerFactory> tomcatCustomizer() {
-        return factory -> factory.addConnectorCustomizers(connector -> {
-            connector.setMaxPostSize(-1);
-        });
+        return factory -> factory.addConnectorCustomizers(connector -> connector.setMaxPostSize(-1));
     }
 }

@@ -18,8 +18,7 @@ public class BatchServiceImpl implements BatchService {
     private final JobLauncher jobLauncher;
     private final Job excelProcessingJob;
 
-    public BatchServiceImpl(JobLauncher jobLauncher,
-                            @Qualifier("excelProcessingJob") Job excelProcessingJob) {
+    public BatchServiceImpl(JobLauncher jobLauncher, @Qualifier("excelProcessingJob") Job excelProcessingJob) {
         this.jobLauncher = jobLauncher;
         this.excelProcessingJob = excelProcessingJob;
     }

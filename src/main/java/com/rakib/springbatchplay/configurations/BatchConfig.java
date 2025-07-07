@@ -112,8 +112,7 @@ public class BatchConfig {
     /*---------Job Specific Beans---------*/
     @Bean
     @Qualifier("excelProcessingJob")
-    public Job excelProcessingJob(JobRepository jobRepository,
-                                  JobExecutionListener jobExecutionListener,
+    public Job excelProcessingJob(JobRepository jobRepository, JobExecutionListener jobExecutionListener,
                                   @Qualifier("processExcelStep") Step processExcelStep,
                                   @Qualifier("cleanupStepForProduct") Step cleanUpStep) {
         return new JobBuilder("excelProcessingJob", jobRepository)
@@ -126,10 +125,8 @@ public class BatchConfig {
 
     @Bean
     @Qualifier("processExcelStep")
-    public Step processExcelStep(JobRepository jobRepository,
-                                 PlatformTransactionManager transactionManager,
-                                 ExcelItemReader excelItemReader,
-                                 ExcelItemProcessor excelItemProcessor,
+    public Step processExcelStep(JobRepository jobRepository, PlatformTransactionManager transactionManager,
+                                 ExcelItemReader excelItemReader, ExcelItemProcessor excelItemProcessor,
                                  ExcelItemWriter excelItemWriter) {
         return new StepBuilder("processExcelStep", jobRepository)
                 .<Row, FinalProduct>chunk(100, transactionManager)

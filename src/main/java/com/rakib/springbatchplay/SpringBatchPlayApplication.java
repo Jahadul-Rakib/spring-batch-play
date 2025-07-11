@@ -14,9 +14,13 @@ import java.io.IOException;
 @SpringBootApplication
 public class SpringBatchPlayApplication {
 
+    private static final String filePath = "src/main/resources/generated/generated_data.xlsx";
+
     public static void main(String[] args) {
         SpringApplication.run(SpringBatchPlayApplication.class, args);
-        //generate_excel_row();
+        if (!new File(filePath).exists()) {
+            generate_excel_row();
+        }
     }
 
     private static void generate_excel_row() {
@@ -36,13 +40,9 @@ public class SpringBatchPlayApplication {
             row.createCell(2).setCellValue((i % 3 == 0) ? "ANY" : "Fruites");
         }
 
-        // Create the directory if it doesn't exist
-        String filePath = "src/main/resources/generated/generated_data.xlsx";
         File file = new File(filePath);
-        // Ensure directory exists
         file.getParentFile().mkdirs();
 
-        // Write to file
         try (FileOutputStream out = new FileOutputStream(file)) {
             workbook.write(out);
             System.out.println("Excel file written to: " + file.getAbsolutePath());
